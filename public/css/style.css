@@ -241,7 +241,7 @@ b {
 }
 
 .bg-dark {
-  background-color: #333;
+  background-color: #171717;
 }
 
 .bg-light {
@@ -368,7 +368,8 @@ a.btn.btn-dark:focus {
 .btn-color,
 a.btn-color {
   color: #fff;
-  background-color: #00ACC1;
+  background-color: transparent;
+  border: 2px dotted #999;
 }
 
 .btn.btn-color:hover,
@@ -378,7 +379,8 @@ a.btn.btn-color:hover,
 a.btn.btn-color:active,
 a.btn.btn-color:focus {
   color: #fff;
-  background-color: #0097A7;
+  background-color: #111;
+  border-color: #fff;
 }
 
 /* ----------------------------------
@@ -387,7 +389,7 @@ a.btn.btn-color:focus {
 
 .btn-white,
 a.btn-white {
-  color: #333;
+  color: #fff;
   background-color: #fff;
 }
 

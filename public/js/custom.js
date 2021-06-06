@@ -35,23 +35,7 @@ $(document).ready(function () {
      Count Down
      _____________________________________ */
 
-    var time = $('.count-down');
-    if (time.length) {
-      var endDate = new Date(time.data("end-date"));
-      time.countdown({
-        date: endDate,
-        render: function (data) {
-          $(this.el).html('<div class="cd-row"><div><h1>' + this.leadingZeros(data.days, 3)
-            + '</h1><p>days</p></div><div><h1>'
-            + this.leadingZeros(data.hours, 2)
-            + '</h1><p>hrs</p></div></div><div class="cd-row"><div><h1>'
-            + this.leadingZeros(data.min, 2)
-            + '</h1><p>min</p></div><div><h1>'
-            + this.leadingZeros(data.sec, 2)
-            + '</h1><p>sec</p></div></div>');
-        }
-      });
-    }
+
     /* _____________________________________
 
      Smooth Scroll
@@ -122,14 +106,6 @@ $(document).ready(function () {
      Navbar Button
      _____________________________________ */
 
-    var collapse = $(".collapse");
-
-    collapse.on('show.bs.collapse', function () {
-      $('.navbar-button').addClass('open');
-    });
-    collapse.on('hide.bs.collapse', function () {
-      $('.navbar-button').removeClass('open');
-    });
 
 
     /* _____________________________________
@@ -198,89 +174,6 @@ $(document).ready(function () {
       });
     }
 
-    
-    /* _____________________________________
-
-     Background Youtube
-     _____________________________________ */
-
-    // shows Video only for Desktop
-    var pageYoutube = $('#page-youtube');
-
-    if (pageYoutube.length && !isMobile && !isTouch) {
-      pageYoutube.YTPlayer({
-        fitToBackground: true,
-        videoId: pageYoutube.data("video-id"),
-        playerVars: {
-          modestbranding: 0,
-          autoplay: 1,
-          controls: 0,
-          showinfo: 0,
-          branding: 0,
-          rel: 0,
-          autohide: 0,
-          start: 0
-        }
-      });
-    }
-
-    /* _____________________________________
-
-     Background Video
-     _____________________________________ */
-
-    // shows Video only for Desktop
-    var pageVideo = $('#page-video');
-
-    if (pageVideo.length && !isMobile && !isTouch) {
-      new $.backgroundVideo($("body"), {
-        "align": "centerXY",
-        "width": 960,
-        "height": 540,
-        "path": pageVideo.data("path"),
-        "filename": pageVideo.data("file"),
-        "types": ["mp4", "ogg", "webm"]
-      });
-    }
-
-    /* _____________________________________
-
-     Background Kenburn
-     _____________________________________ */
-
-
-    var selectorKenburn = $("#kenburn-slider, body");
-    if ($('#kenburn-slider').length) {
-
-      selectorKenburn.vegas({
-        slides: [
-          {src: "images/placeholder-2400-1600.jpg"},
-          {src: "images/placeholder-2400-1600.jpg"},
-          {src: "images/placeholder-2400-1600.jpg"}
-          // further slide definitions
-        ],
-        transition: 'fade',
-        animation: 'random',
-        transitionDuration: 4000,
-        delay: 8000,
-        timer: false
-      });
-    }
-
-
-    /* _____________________________________
-
-     Background Particle
-     _____________________________________ */
-
-    var pageParticle = $('#page-particle');
-    if (pageParticle.length) {
-
-      pageParticle.particleground({
-        dotColor: pageParticle.data("dot-color"),
-        lineColor: pageParticle.data("line-color")
-      });
-    }
 
 
     /* _____________________________________
@@ -304,87 +197,6 @@ $(document).ready(function () {
 
      Background Rain
      _____________________________________ */
-
-    var pageRain = $('#page-rain');
-    if (pageRain.length && !isMobile && !isTouch) {
-      var image = pageRain[0];
-      image.onload = function () {
-        var engine = new RainyDay({
-          image: this,
-          parentElement: $('.section-overlay')[0]
-        });
-        engine.rain([[1, 2, 4000]]); // add 4000 drops of size from 1 - 2
-        engine.rain(
-          [
-            [3, 3, 1], [5, 5, 1], [6, 2, 1]
-          ],
-          100); // every 100ms
-      };
-      image.crossOrigin = 'anonymous';
-      image.src = pageRain.attr('src');
-    }
-
-
-    /* _____________________________________
-
-     Background Amplitude & Sound
-     _____________________________________ */
-
-
-    var pageAmplitude = $('#page-amplitude'),
-      volume = $('#volume'),
-      playback = $('#playback');
-
-
-    if (pageAmplitude.length) {
-
-      var wave = new SiriWave({
-        speed: 0.05,
-        amplitude: 1,
-        container: pageAmplitude[0],
-        autostart: true,
-        frequency: 4,
-        height: 300,
-        style: 'ios9'
-      });
-
-      if (!isMobile && !isTouch) {
-        var sound = new Howl({
-          src: ['audio/egotype.webm', 'audio/egotype.mp3'],
-          autoplay: true,
-          loop: true
-        });
-
-        playback.on('click', function () {
-          if (playback.hasClass('pause')) {
-            playback.addClass('play').removeClass('pause');
-            playback.find('i').removeClass('icon-music-pause-button').addClass('icon-music-play-button');
-            sound.pause();
-            wave.stop();
-          } else {
-            playback.removeClass('play').addClass('pause');
-            playback.find('i').removeClass('icon-music-play-button').addClass('icon-music-pause-button');
-            sound.play();
-            wave.start();
-          }
-        });
-
-        volume.on('click', function () {
-          if (volume.hasClass('vol-1')) {
-            volume.removeClass('vol-1').addClass('vol-0');
-            volume.find('i').removeClass('icon-music-volume-up').addClass('icon-music-volume-down');
-            sound.volume(0);
-          } else {
-            volume.addClass('vol-1').removeClass('vol-0');
-            volume.find('i').removeClass('icon-music-volume-down').addClass('icon-music-volume-up');
-            sound.volume(1);
-          }
-        });
-      } else {
-        volume.hide();
-        playback.hide();
-      }
-    }
 
 
     /* _____________________________________
@@ -563,8 +375,8 @@ $(document).ready(function () {
         ratio: 200
       });
     }
-    
-    
+
+
     /* _____________________________________
 
     Background A Long Way
@@ -578,7 +390,7 @@ $(document).ready(function () {
         time: 0.0
       };
     }
-    
+
 
     /* _____________________________________
 
@@ -589,8 +401,8 @@ $(document).ready(function () {
 
     if (rainDrop.length) {
       defaults = {
-        length : 30,
-        speed : 15,
+        length : 10,
+        speed : 1,
         // Gradient from top to Bottom
         startColor : "#00a8ff",
         middleColor : "#00a8ff",
@@ -598,7 +410,7 @@ $(document).ready(function () {
       };
     }
 
-    
+
     /* _____________________________________
 
     Background Homing Particles
@@ -613,7 +425,7 @@ $(document).ready(function () {
       THRESHOLD : 30,
       SPRING_AMOUNT : 0.01,
       LIMIT_RATE : 0.8,
-    
+
       BACKGROUND_COLOR_HUE : 0,
       BACKGROUND_COLOR_SATURATION : 0,
       BACKGROUND_COLOR_LIGHTNESS : 0,
